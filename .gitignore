@@ -1,0 +1,14 @@
+# secrets and state
+k8s/db-secret.yaml
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/terraform.tfstate
+infra/terraform.tfstate.backup
+infra/iam-policy.json
+
+# build output
+**/target/
+storefront/dist/
+storefront/node_modules/
+iam-policy.json
+lbc-patch-policy.json
