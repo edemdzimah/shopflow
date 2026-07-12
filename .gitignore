@@ -13,3 +13,5 @@ storefront/node_modules/
 iam-policy.json
 lbc-patch-policy.json
 shopflow-secrets-policy.json
+shopflow-sqs-policy.json
+shopflow-secrets-policy.json
