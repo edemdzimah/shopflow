@@ -26,7 +26,7 @@ pipeline {
         ECR_ACCOUNT  = '071231919766'
         GITOPS_REPO  = 'github.com/edemdzimah/shopflow-gitops.git'
         
-        SERVICE      = params.SERVICE
+        SERVICE      = "${params.SERVICE}"
         SERVICE_DIR  = "services/${params.SERVICE}-service"
         SERVICE_DIR  = "services/${params.SERVICE}-service"
         IMAGE_REPO   = "shopflow-${params.SERVICE}"
