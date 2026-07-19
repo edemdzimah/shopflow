@@ -64,7 +64,7 @@ pipeline {
             steps {
                 dir("${SERVICE_DIR}") {
                     sh '''
-                        mvn -B -ntp deploy:deploy-file \
+                        mvn -B -ntp org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file \
                           -Durl=${NEXUS_URL} \
                           -DrepositoryId=nexus \
                           -Dfile=target/app.jar \
