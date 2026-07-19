@@ -64,12 +64,22 @@ pipeline {
             steps {
                 dir("${SERVICE_DIR}") {
                     sh '''
-                        mvn -B -ntp org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file \
+                        cat > /tmp/nexus-settings.xml <<EOF
+<settings>
+  <servers>
+    <server>
+      <id>nexus</id>
+      <username>${NEXUS_CREDS_USR}</username>
+      <password>${NEXUS_CREDS_PSW}</password>
+    </server>
+  </servers>
+</settings>
+EOF
+                        mvn -B -ntp -s /tmp/nexus-settings.xml org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy-file \
                           -Durl=${NEXUS_URL} \
                           -DrepositoryId=nexus \
                           -Dfile=target/app.jar \
-                          -DgroupId=com.shopflow -DartifactId=${SERVICE}-service -Dversion=1.0.${BUILD_NUMBER} -Dpackaging=jar \
-                          -Dusername=${NEXUS_CREDS_USR} -Dpassword=${NEXUS_CREDS_PSW}
+                          -DgroupId=com.shopflow -DartifactId=${SERVICE}-service -Dversion=1.0.${BUILD_NUMBER} -Dpackaging=jar
                     '''
                 }
             }
